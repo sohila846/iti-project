@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+    <div class="sidebar"> <small class="text-muted pl-3">admin dashboard</small>
+        <ul>
+            <h2 class="text-muted pl-3">manage users</h2>
+            <li><a class="navbar-brand" type="button" (click)="onclick()"
+            ><i class="fas fa-home"></i>providers</a></li>
+            <li><a class="navbar-brand" type="button" 
+                ><i class="fas fa-home"></i>customers</a></li>
+            
+           
+        </ul> <h2 class="text-muted px-3">Manage products</h2>
+        <ul>
+            <li><a class="navbar-brand" type="button" (click)="onclick2()"><i class="far fa-credit-card"></i>Products</a></li>
+            
+        </ul> <small class="text-muted px-3">GROW YOUR CLIENT BASE</small>
+        <ul>
+            <li><a href="#"><i class="fas fa-external-link-alt"></i>Share</a></li>
+            <li><a href="#"><i class="fas fa-code"></i>Add to Website</a></li>
+        </ul>
+    </div>
+</div>
+<div class="col-8">
+    <div class="container m-3">
+        <div class="border m-2">
+            <table class="table table-bordered ">
+                <thead>
+                  <tr class="table-warning">
+                    
+                    <th scope="col">#</th>
+                    <th scope="col">name</th>
+                    <th scope="col">email</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="table-Light" *ngFor="let users of (customers|async)">
+                    
+                    <td>{{users.id}}</td>
+                    <td>{{users.name}}</td>
+                    <td>{{users.email}}</td>
+                    <td><a type="button" (click)="delete(users.id)" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-trash" viewBox="0 0 16 16">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                      </svg></a></td>
+                   
+                  </tr>
+                 
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+</div>
+</div>
