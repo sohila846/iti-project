@@ -18,6 +18,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { ManageprovidersComponent } from "./manageproviders/manageproviders.component";
 import { getAuth, provideAuth } 
 from '@angular/fire/auth';
+import { NgbAlertModule, NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -41,6 +42,8 @@ from '@angular/fire/auth';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth()),
+    NgbModule,
+    NgbPaginationModule, NgbAlertModule
     
     
   ],

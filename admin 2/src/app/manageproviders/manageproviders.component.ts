@@ -11,6 +11,7 @@ import {
   deleteDoc 
 } from '@angular/fire/firestore';
 import { where,query } from '@firebase/firestore';
+import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-manageproviders',
   templateUrl: './manageproviders.component.html',
@@ -18,7 +19,8 @@ import { where,query } from '@firebase/firestore';
 })
 export class ManageprovidersComponent implements OnInit {
   customers:any
-  constructor(private router : Router,private db2: Firestore) { 
+  userData:any
+  constructor(private router : Router,private db2: Firestore,private authService:AuthService) { 
     const Collection =query(collection(db2, 'users'),where("phoneNumber","!=",null)) ;
     this.customers = collectionData(Collection);
     
@@ -26,7 +28,7 @@ export class ManageprovidersComponent implements OnInit {
   
 
   ngOnInit(): void {
-    
+    this.userData=this.getUserInfo()
   }
  onclick(){
   this.router.navigate([`admin-dashboard/manageuser`]);
@@ -36,5 +38,12 @@ export class ManageprovidersComponent implements OnInit {
  }
  delete(id:any){
   deleteDoc(doc(this.db2 , 'users' , id));
+ }
+ getUserInfo(){
+  return this.authService.getuser()
+
+ }
+ signOut(){
+    this.authService.signOut()
  }
 }

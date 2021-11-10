@@ -10,6 +10,7 @@ import {
   deleteDoc 
 } from '@angular/fire/firestore';
 import { where,query } from '@firebase/firestore';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-manageusers',
@@ -19,8 +20,9 @@ import { where,query } from '@firebase/firestore';
 export class ManageusersComponent implements OnInit {
  //users:any
  providers:any
+ userData:any
 //  customers:any
-  constructor(private router : Router,private db: Firestore) {
+  constructor(private router : Router,private db: Firestore,private authService:AuthService) {
     // const dataCollection = collection(db, 'users');
     // this.users = collectionData(dataCollection);
     const dataCollection =query(collection(db, 'users'),where("cr","!=",null)) ;
@@ -42,6 +44,7 @@ export class ManageusersComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.userData=this.getUserInfo()
   }
 onclick(){
   this.router.navigate([`admin-dashboard/manageproduct`]);
@@ -52,5 +55,12 @@ onclick2(){
 deleteMovie(id:any){
   deleteDoc(doc(this.db , 'users' , id));
 }
+getUserInfo(){
+  return this.authService.getuser()
+
+ }
+ signOut(){
+    this.authService.signOut()
+ }
 
 }
