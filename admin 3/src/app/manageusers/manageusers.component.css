@@ -75,3 +75,20 @@ i.far.fa-credit-card:hover {
 .sidebar ul li a:hover {
     text-decoration: none
 }
+
+.box{
+    
+    box-shadow: rgb(20, 20, 20);
+    
+}
+.delete{
+    border-radius: 100%;        
+    background: rgb(184, 184, 182);
+    display:inline-block;
+    line-height:25px;
+    color: white;
+    
+}
+.hello{
+    color: white;
+}
