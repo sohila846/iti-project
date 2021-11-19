@@ -1,0 +1,72 @@
+<div class="container-fluid bg-primary">
+  <div class="row align-items-center justify-content-end">
+    <span class="btn btn-warning btn-sm m-3" (click)="goback()"
+      >back to all providers</span
+    >
+  </div>
+</div>
+<div class="row mt-5 m-2">
+    <div class="col-6">
+  <div class="card mb-3" style="max-width: 700px; max-height: 400px">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="/assets/photos/profile.jpg" class="img-fluid rounded-start" />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h1 class="card-title">Name : {{ provider.name }}</h1>
+          <h2 class="card-text">The provider's CR : {{ provider.cr }}</h2>
+          <h3 class="card-text">
+            <h3 class="text-muted">Provider's Email : {{ provider.email }}</h3>
+          </h3>
+          <ngb-rating 
+            [(rate)]="selected"
+            (hover)="hovered = $event"
+            (leave)="hovered = 0"
+            [readonly]="readonly"
+          ></ngb-rating>
+          <hr />
+          <pre>
+Selected: <b>{{selected}}</b>
+Hovered: <b>{{hovered}}</b>
+</pre>
+          <button
+            class="btn btn-sm btn-outline-{{ readonly ? 'danger' : 'success' }}"
+            (click)="readonly = !readonly"
+          >
+            {{ readonly ? "readonly" : "editable" }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+    <div class="col-6 ">
+        <table class="table table-bordered ">
+            <thead>
+              <tr class="table-warning">
+                
+                <th scope="col">name</th>
+                <th scope="col">category</th>
+                <th scope="col">lifetime in monthes</th>
+                <th scope="col">price</th>
+                <th scope="col">quantaty</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr class="table-Light" *ngFor="let product of (items)">
+              
+                <td>{{product.name}}</td>
+                <td>{{product.category}}</td>
+                <td>{{product.lifetime}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.quantaty}} </td> 
+                
+              </tr>
+             
+            </tbody>
+          </table>
+    </div>
+</div>
