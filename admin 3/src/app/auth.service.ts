@@ -37,6 +37,26 @@ export class AuthService {
 
   
   }
+  isLoggedIn(){
+    //const user=localStorage.getItem('user');
+    if(window.localStorage.length !==0){
+     //console.log( this.auth.currentUser);
+     return true;
+    }
+      //console.log("whathappend")
+      return false;
+    
+  }
+  isLoggedout(){
+    //const user=localStorage.getItem('user');
+    if(window.localStorage.length !==0){
+     //console.log( this.auth.currentUser);
+     return false;
+    }
+      //console.log("whathappend")
+      return true;
+    
+  }
   async emailLogin(email: string, password: string)
   : Promise<any> {
     return await signInWithEmailAndPassword(this.auth, email, password);

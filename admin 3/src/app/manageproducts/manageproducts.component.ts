@@ -62,6 +62,9 @@ userData:any
    
     
   }
+  onclick3(){
+    this.router.navigate([`admin-dashboard/chart`]);
+  }
   deleteMovie(id:any){
     deleteDoc(doc(this.db , 'items' , id));}
     reject(id:any){

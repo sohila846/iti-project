@@ -21,6 +21,9 @@ export class AdminDasboardComponent implements OnInit {
   onclick2(){
     this.router.navigate([`admin-dashboard/manageproduct`]);
   }
+  onclick4(){
+    this.router.navigate([`admin-dashboard/chart`]);
+  }
   onclick3(){
     this.router.navigate([`admin-dashboard/managecustomers`]);
   }

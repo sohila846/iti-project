@@ -23,6 +23,8 @@ import { MatSliderModule } from '@angular/material/slider'
 import {MatIconModule} from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ChartsComponent } from './charts/charts.component';
+import { ProvideprofileComponent } from './provideprofile/provideprofile.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AdminDasboardComponent,
     ManageusersComponent,
     ManageproductsComponent,
-    ManageprovidersComponent
+    ManageprovidersComponent,
+    ChartsComponent,
+    ProvideprofileComponent
   ],
   imports: [
     BrowserModule,

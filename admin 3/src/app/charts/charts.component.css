@@ -75,7 +75,33 @@ i.far.fa-credit-card:hover {
 .sidebar ul li a:hover {
     text-decoration: none
 }
+.border{
+    border-style: inset;
+}
+.box{
+    border-style: inset;
+    border-radius: 3px;
+    
+    box-shadow: rgb(20, 20, 20);
+    
+}
+
+h2{
+    text-shadow: #adb5bd;
+    box-shadow: #adb5bd;
+}
+ul{
+    font-size: 20px;
+}
 .hello{
     color: white;
-    align-items: center;
+}
+.cover{
+    border-style: inset;
+    border-radius: 5px;
+    height: 200px;
+    width: 400px;
+    box-shadow: rgb(106, 136, 24);
+    background-color: #adb5bd;
+   
 }

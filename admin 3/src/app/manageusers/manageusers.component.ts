@@ -49,6 +49,9 @@ export class ManageusersComponent implements OnInit {
 onclick(){
   this.router.navigate([`admin-dashboard/manageproduct`]);
 }
+onclick3(){
+  this.router.navigate([`admin-dashboard/chart`]);
+}
 onclick2(){
   this.router.navigate([`admin-dashboard/managecustomers`]);
 }
@@ -61,6 +64,10 @@ getUserInfo(){
  }
  signOut(){
     this.authService.signOut()
+ }
+ profile(userid:any){
+   console.log(userid)
+  this.router.navigate([`admin-dashboard/providerprofile`],{queryParams:userid});
  }
 
 }

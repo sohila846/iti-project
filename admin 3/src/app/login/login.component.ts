@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   invalid:any
+
   moviesForm=new FormGroup({
    
     password:new FormControl
@@ -36,7 +37,7 @@ export class LoginComponent {
   }
 
   constructor(private fb: FormBuilder,private router : Router,private authService: AuthService){
-    
+    console.log(this.authService.isLoggedIn())
   }
   submitReactiveForm(email:any,password:any) {
     

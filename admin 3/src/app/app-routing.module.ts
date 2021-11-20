@@ -1,5 +1,7 @@
+import { LoginGuard } from './login.guard';
+import { ProvideprofileComponent } from './provideprofile/provideprofile.component';
+import { ChartsComponent } from './charts/charts.component';
 import { ManageprovidersComponent } from './manageproviders/manageproviders.component';
-
 import { ManageusersComponent } from './manageusers/manageusers.component';
 import { AdminDasboardComponent } from './admin-dasboard/admin-dasboard.component';
 import { RegisterComponent } from './register/register.component';
@@ -8,16 +10,17 @@ import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ManageproductsComponent } from './manageproducts/manageproducts.component';
-
+import { LogoutGuard } from './logout.guard';
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-
+    canActivate:[LogoutGuard]
   },
   {
   path: 'login',
   component: LoginComponent,
+  canActivate:[LogoutGuard]
   
 },
 {
@@ -38,11 +41,17 @@ const routes: Routes = [
 {
   path: 'admin-dashboard',
   component: AdminDasboardComponent,
+  canActivate:[LoginGuard]
  
 },
 {
   path: 'admin-dashboard/manageuser',
   component: ManageusersComponent,
+ 
+},
+{
+  path: 'admin-dashboard/chart',
+  component: ChartsComponent,
  
 },
 {
@@ -56,10 +65,16 @@ const routes: Routes = [
   component: ManageproductsComponent,
  
 },
+{
+  path: 'admin-dashboard/providerprofile',
+  component: ProvideprofileComponent,
+ 
+},
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [LoginGuard]
 })
 export class AppRoutingModule { }

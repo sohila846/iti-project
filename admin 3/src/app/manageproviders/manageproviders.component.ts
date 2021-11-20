@@ -36,6 +36,9 @@ export class ManageprovidersComponent implements OnInit {
  onclick2(){
   this.router.navigate([`admin-dashboard/manageproduct`]);
  }
+ onclick3(){
+  this.router.navigate([`admin-dashboard/chart`]);
+ }
  delete(id:any){
   deleteDoc(doc(this.db2 , 'users' , id));
  }
