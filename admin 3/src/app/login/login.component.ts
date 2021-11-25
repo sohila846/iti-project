@@ -44,7 +44,7 @@ export class LoginComponent {
     const z=this.authService.emailLogin(email,password)
     z.then(value => {
       console.log('Nice, it worked!');
-      this.router.navigate([`admin-dashboard`]);
+      this.router.navigate([`admin-dashboard/chart`]);
     })
     z.catch(err => {
       //console.log('Something went wrong: ', err.message);

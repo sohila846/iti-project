@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   Firestore,
@@ -11,7 +11,9 @@ import {
 } from '@angular/fire/firestore';
 import { where,query } from '@firebase/firestore';
 import { AuthService } from '../auth.service';
-
+import{MatTableDataSource}from '@angular/material/table';
+import{MatPaginator}from '@angular/material/paginator';
+import{MatSort}from '@angular/material/sort';
 @Component({
   selector: 'app-manageproducts',
   templateUrl: './manageproducts.component.html',
@@ -24,21 +26,28 @@ items:Array<any>=[]
 providers:Array<any>=[]
 providername:any;
 userData:any
-
-
+displayedColumns=['name','category','provider_name'	,'price',	'status','change_status'	,'Delete']
+dataSource!:MatTableDataSource<any>
+@ViewChild('paginator') paginator! :MatPaginator;
+@ViewChild(MatSort) matSort! :MatSort;
   constructor(private router : Router,private db: Firestore, private authService:AuthService) {
    const dataCollection = collection(db, 'items');
     this.products = collectionData(dataCollection);
     collectionData(dataCollection).subscribe((data:any) => {
-
+      
       // console.log(data);
      this.items=data;
+     this.dataSource=new MatTableDataSource(this.items);
+     this.dataSource.paginator=this.paginator;
+     this.dataSource.sort=this.matSort;
      for(let i in this.items){
        const id=this.items[i].provider_id;
        const relCollection =query(collection(db, 'users'),where("id","==",id)) ;
        collectionData(relCollection).subscribe((data:any) => {
         console.log(data);
+        
        this.items[i].provider_id=data[0].name;
+       
       })
      }
     })
@@ -47,10 +56,13 @@ userData:any
     collectionData(relCollection).subscribe((data:any) => {
       console.log(data);
      this.providers=data;
+     
     })
     
   }
- 
+  filterData(e:any){
+    this.dataSource.filter=e.target.value;
+  }
   ngOnInit(): void {
     this.userData=this.getUserInfo()
   }
@@ -66,7 +78,10 @@ userData:any
     this.router.navigate([`admin-dashboard/chart`]);
   }
   deleteMovie(id:any){
-    deleteDoc(doc(this.db , 'items' , id));}
+    if (confirm("Are you sure you want to delete")) {
+      deleteDoc(doc(this.db , 'items' , id));
+    }
+   }
     reject(id:any){
       setDoc(doc(this.db, 'items' , id), {
         status: 'rejected',

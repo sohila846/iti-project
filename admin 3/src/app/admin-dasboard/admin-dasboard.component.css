@@ -8,7 +8,7 @@
 }
 
 body {
-    background: #f3f5f9
+    background: #f4f4f4
 }
 
 .container {
@@ -16,11 +16,18 @@ body {
 }
 
 .sidebar {
-    position: fixed;
-    width: 300px;
-    height: 100%;
-    background: #201f1fe0;
-    padding: 20px 0
+    
+        position: fixed;
+        min-width: 250px;
+        max-width: 250px;
+        background: url(../../assets/photos/side.jpg);
+        background-position: center;
+        opacity: 0.9;
+        color: #fff;
+        transition: all 0.3s;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.6);
+        z-index: 3;
+    
 }
 
 .text-muted {

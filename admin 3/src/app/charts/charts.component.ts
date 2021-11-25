@@ -57,7 +57,7 @@ export class ChartsComponent implements OnInit {
     const dataCollection = collection(db, 'items');
     this.products = collectionData(dataCollection);
     collectionData(dataCollection).subscribe((data: any) => {
-      console.log(data[4].quantaty);
+      //console.log(data[4].quantaty);
       this.items = data;
       for (let i in this.items) {
         if (

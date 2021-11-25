@@ -18,13 +18,20 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { ManageprovidersComponent } from "./manageproviders/manageproviders.component";
 import { getAuth, provideAuth } 
 from '@angular/fire/auth';
-import { NgbAlertModule, NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { MatSliderModule } from '@angular/material/slider'
 import {MatIconModule} from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsComponent } from './charts/charts.component';
 import { ProvideprofileComponent } from './provideprofile/provideprofile.component';
+import { FilterPipe } from './filter.pipe';
+import{MatTableModule}from '@angular/material/table';
+import{MatPaginatorModule}from '@angular/material/paginator';
+import{MatSortModule}from '@angular/material/sort';
+import{MatFormFieldModule}from '@angular/material/form-field';
+import{MatInputModule}from '@angular/material/input';
+import "@angular/compiler";
 
 @NgModule({
   declarations: [
@@ -39,7 +46,8 @@ import { ProvideprofileComponent } from './provideprofile/provideprofile.compone
     ManageproductsComponent,
     ManageprovidersComponent,
     ChartsComponent,
-    ProvideprofileComponent
+    ProvideprofileComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -49,13 +57,12 @@ import { ProvideprofileComponent } from './provideprofile/provideprofile.compone
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth()),
     NgbModule,
-    NgbPaginationModule, NgbAlertModule,
-    MatSliderModule,
-    MatIconModule,
-    MatButtonModule,
-    BrowserAnimationsModule
-    
-   
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatInputModule,
      
     
   ],
