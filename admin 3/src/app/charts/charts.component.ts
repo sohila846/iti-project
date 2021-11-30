@@ -133,6 +133,15 @@ export class ChartsComponent implements OnInit {
   onclick3() {
     this.router.navigate([`admin-dashboard/manageproduct`]);
   }
+  orders(){
+    this.router.navigate([`admin-dashboard/orders`]);
+  }
+  addadmin(){
+    this.router.navigate([`register`]);
+  }
+  addservice(){
+    this.router.navigate([`addservice`]);
+  }
   signOut() {
     this.authService.signOut();
   }
@@ -161,8 +170,11 @@ export class ChartsComponent implements OnInit {
               'rgb(54, 162, 235)',
               'rgb(255, 205, 86)',
               'rgb(30, 207, 85)',
-              'rgb(70, 207, 85)',
-              'rgb(90, 207, 85)',
+              'rgb(230, 207, 85)',
+              'rgb(20, 100, 85)',
+              'rgb(150, 207, 85)',
+              'rgb(200, 100, 85)',
+              'rgb(170, 100, 85)',
               
             ],
           },
@@ -221,4 +233,5 @@ export class ChartsComponent implements OnInit {
      
   });
   }
+ 
 }

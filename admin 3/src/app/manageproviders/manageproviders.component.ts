@@ -56,12 +56,21 @@ export class ManageprovidersComponent implements OnInit{
   ngOnInit(): void {
     this.userData=this.getUserInfo()
   }
+  addadmin(){
+    this.router.navigate([`register`]);
+  }
+  orders(){
+    this.router.navigate([`admin-dashboard/orders`]);
+  }
   filterData(e:any){
     this.dataSource.filter=e.target.value;
   }
  onclick(){
   this.router.navigate([`admin-dashboard/manageuser`]);
  }
+ addservice(){
+  this.router.navigate([`addservice`]);
+}
  onclick2(){
   this.router.navigate([`admin-dashboard/manageproduct`]);
  }

@@ -23,7 +23,9 @@ export class ManageusersComponent implements OnInit {
  //users:any
  providers:any
  userData:any
- displayedColumns=['name','email','Delete','profile']
+ rating:any
+ 
+ displayedColumns=['name','email','rating','Delete','profile']
  dataSource!:MatTableDataSource<any>
  @ViewChild('paginator') paginator! :MatPaginator;
  @ViewChild(MatSort) matSort! :MatSort;
@@ -34,10 +36,29 @@ export class ManageusersComponent implements OnInit {
     const dataCollection =query(collection(db, 'users'),where("cr","!=",null)) ;
     this.providers = collectionData(dataCollection);
     collectionData(dataCollection).subscribe((data) => {
+      console.log(data)
       this.providers=data;
-      this.dataSource=new MatTableDataSource(this.providers);
-      this.dataSource.paginator=this.paginator;
-    this.dataSource.sort=this.matSort;
+      
+    for(let i in data){
+    const dataCollection3 = query(collection(this.db, 'rating'),where("provider_id","==", data[i].id));
+    collectionData(dataCollection3).subscribe(data=>{
+      
+     let sum=0;
+     
+     for(let j in data){
+       sum=sum+data[j].rating
+     }
+     this.rating=sum/5;
+     this.providers[i].rating=this.rating
+     
+    console.log(this.rating)
+  });
+  
+  
+}
+this.dataSource=new MatTableDataSource(this.providers);
+this.dataSource.paginator=this.paginator;
+this.dataSource.sort=this.matSort;
     //   let j=-1;
     //   for(let i in data){
     //     if( data[i].cr){
@@ -60,6 +81,9 @@ export class ManageusersComponent implements OnInit {
   }
 onclick(){
   this.router.navigate([`admin-dashboard/manageproduct`]);
+}
+addservice(){
+  this.router.navigate([`addservice`]);
 }
 onclick3(){
   this.router.navigate([`admin-dashboard/chart`]);
@@ -84,5 +108,10 @@ getUserInfo(){
    console.log(userid)
   this.router.navigate([`admin-dashboard/providerprofile`],{queryParams:userid});
  }
-
+ addadmin(){
+  this.router.navigate([`register`]);
+}
+orders(){
+  this.router.navigate([`admin-dashboard/orders`]);
+}
 }

@@ -1,3 +1,10 @@
+<div class="container-fluid bg-primary">
+  <div class="row align-items-center justify-content-end">
+    <span class="btn btn-warning btn-sm m-3" (click)="goback()"
+      >Back to dashboard</span
+    >
+  </div>
+</div>
 <div class="container">
     <div class="row">
         <div class="col-7">
@@ -5,7 +12,7 @@
         </div>
         <div class="col-5">
             <div class="formgroup m-2 bg-light">
-        <form [formGroup]="moviesForm" (ngSubmit)="submitReactiveForm()" class="m-3">
+        <form [formGroup]="moviesForm" (ngSubmit)="submitReactiveForm(email.value,password.value,name.value,username.value)" class="m-3">
         <div class="mb-3">
           <label for="myname" class="form-label">name</label>
           <input
@@ -14,6 +21,7 @@
             id="myname"
             name="myname"
             formControlName="myname"
+            #name
           />
           <div
           *ngIf="
@@ -39,6 +47,7 @@
               id="emailid"
               name="email"
               formControlName="email"
+              #email
             />
             <div
             *ngIf="
@@ -71,6 +80,7 @@
               id="usernameid"
               name="username"
               formControlName="username"
+              #username
             />
             <div
             *ngIf="
@@ -102,6 +112,7 @@
               id="password"
               name="password"
               formControlName="password"
+              #password
             />
             <div
             *ngIf="
@@ -125,35 +136,7 @@
           </div>
     
     
-          <div class="mb-3">
-            <label for="conpasswordid" class="form-label">confirm password</label>
-            <input
-              type="text"
-              class="form-control"
-              id="conpasswordid"
-              name="conpassword"
-              formControlName="conpassword"
-            />
-            <div
-            *ngIf="
-              moviesFormControls.conpassword?.touched &&
-              !moviesFormControls.conpassword?.valid
-            "
-          >
-            <small
-              class="text-danger"
-              *ngIf="moviesFormControls.conpassword.errors?.required"
-              >password required</small
-            >
-            <small
-            class="text-danger"
-            *ngIf="moviesFormControls.conpassword.errors?.confirmedValidator"
-            >password required</small
-          >
-           
-            
-          </div>
-          </div>
+         
         <button
           type="submit"
           class="btn btn-primary my-5"
@@ -161,7 +144,7 @@
         >
           Submit
         </button>
-        <p>already have account <a type="button" (click)="onclick()" class="colors">log in</a></p>
+       
       </form>
     </div>
     </div>

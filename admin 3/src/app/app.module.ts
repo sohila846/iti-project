@@ -32,6 +32,9 @@ import{MatSortModule}from '@angular/material/sort';
 import{MatFormFieldModule}from '@angular/material/form-field';
 import{MatInputModule}from '@angular/material/input';
 import "@angular/compiler";
+import { OrdersComponent } from './orders/orders.component';
+import { AddserviceComponent } from './addservice/addservice.component';
+
 
 @NgModule({
   declarations: [
@@ -47,7 +50,10 @@ import "@angular/compiler";
     ManageprovidersComponent,
     ChartsComponent,
     ProvideprofileComponent,
-    FilterPipe
+    FilterPipe,
+    OrdersComponent,
+    AddserviceComponent,
+   
   ],
   imports: [
     BrowserModule,

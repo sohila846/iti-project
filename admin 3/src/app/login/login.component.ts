@@ -56,7 +56,5 @@ export class LoginComponent {
    
     
   }
-  onclick(){
-    this.router.navigate([`login-register`]);
-  }
+ 
 }

@@ -69,6 +69,9 @@ dataSource!:MatTableDataSource<any>
   onclick(){
     this.router.navigate([`admin-dashboard/manageuser`]);
   }
+  addservice(){
+    this.router.navigate([`addservice`]);
+  }
   onclick2(){
     this.router.navigate([`admin-dashboard/managecustomers`]);
    
@@ -76,6 +79,12 @@ dataSource!:MatTableDataSource<any>
   }
   onclick3(){
     this.router.navigate([`admin-dashboard/chart`]);
+  }
+  addadmin(){
+    this.router.navigate([`register`]);
+  }
+  orders(){
+    this.router.navigate([`admin-dashboard/orders`]);
   }
   deleteMovie(id:any){
     if (confirm("Are you sure you want to delete")) {

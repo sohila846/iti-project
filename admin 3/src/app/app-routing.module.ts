@@ -1,3 +1,4 @@
+import { AddserviceComponent } from './addservice/addservice.component';
 import { LoginGuard } from './login.guard';
 import { ProvideprofileComponent } from './provideprofile/provideprofile.component';
 import { ChartsComponent } from './charts/charts.component';
@@ -11,6 +12,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ManageproductsComponent } from './manageproducts/manageproducts.component';
 import { LogoutGuard } from './logout.guard';
+import { AddAdminComponent } from './add-admin/add-admin.component';
+import { OrdersComponent } from './orders/orders.component';
 const routes: Routes = [
   {
     path: '',
@@ -26,6 +29,11 @@ const routes: Routes = [
 {
   path: 'register',
   component: RegisterComponent,
+ 
+},
+{
+  path: 'addservice',
+  component: AddserviceComponent,
  
 },
 {
@@ -50,10 +58,16 @@ const routes: Routes = [
  
 },
 {
+  path: 'admin-dashboard/orders',
+  component:OrdersComponent,
+ 
+},
+{
   path: 'admin-dashboard/chart',
   component: ChartsComponent,
  
 },
+
 {
   path: 'admin-dashboard/managecustomers',
   component:ManageprovidersComponent,

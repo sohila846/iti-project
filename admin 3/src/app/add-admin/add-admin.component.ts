@@ -1,24 +1,14 @@
-import { Component} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import {
-  Firestore,
-  collection,
-  collectionData,
-  doc,
-  docData,
-  setDoc,
-  deleteDoc,
-} from '@angular/fire/firestore';
+import { collection, doc, Firestore, setDoc } from 'firebase/firestore';
 import { AuthService } from '../auth.service';
-
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-add-admin',
+  templateUrl: './add-admin.component.html',
+  styleUrls: ['./add-admin.component.css']
 })
-export class RegisterComponent  {
-
+export class AddAdminComponent implements OnInit {
   moviesForm=new FormGroup({
     myname:new FormControl("",Validators.required),
     password:new FormControl
@@ -34,18 +24,10 @@ export class RegisterComponent  {
   )
 
   ;
- 
-  
-
-  
-
   get moviesFormControls() {
     return this.moviesForm.controls;
   }
-
-  constructor(private fb: FormBuilder,private router : Router,private authService: AuthService,private firestore: Firestore){
-    
-  }
+  constructor(private fb: FormBuilder,private router : Router,private authService: AuthService,private firestore: Firestore) { }
   submitReactiveForm(email:any,password:any,name:any,username:any) {
     const z=this.authService.emailSignUp(email,password);
     z.then(value =>{
@@ -57,14 +39,14 @@ export class RegisterComponent  {
       username:username,
       id:myDoc.id
     });
-   window.alert("done");
+    this.router.navigate(['admin-dashboard'])
     });
    z.catch(err=>{
      console.log(err);
    });
   }
- 
-goback(){
-  this.router.navigate([`admin-dashboard/chart`]);
-}
+
+  ngOnInit(): void {
+  }
+goback(){}
 }
